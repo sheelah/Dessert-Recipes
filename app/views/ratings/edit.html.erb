@@ -1,0 +1,6 @@
+<h1>Editing rating for <%= @recipe.name %></h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Show', [@recipe, @rating] %> |
+<%= link_to 'Back', recipe_ratings_path(@recipe) %>

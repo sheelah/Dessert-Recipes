@@ -1,0 +1,141 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ */
+
+@import url(http://fonts.googleapis.com/css?family=Handlee);
+
+#banner {
+  background: #544759;
+  padding: 30px;
+  border-bottom: 2px solid;
+  letter-spacing: -0.05em;
+  font-family: 'Handlee', cursive;
+  font-size: 4em;
+  color: #fff;
+  text-align: center;
+
+  img {
+    float: left;
+  }
+}
+
+#current_user {
+  float: right;
+  letter-spacing: -0.01em;
+  font-size: 0.8em;
+}
+
+#footer {
+  background: white;
+  p {
+    text-align: center;
+    font-size: 0.8em;
+  }
+}
+
+#notice {
+  color: #000 !important;
+  border: 2px solid red;
+  padding: 1em;
+  margin-bottom: 2em;
+  background-color: #f0f0f0;
+  font: bold smaller sans-serif;
+}
+
+#columns {
+  background: #d7d0db;
+
+  #main {
+    margin-left: 17em;
+    padding: 1em;
+    background-image: image-url('back_pattern.png');
+    background-repeat: repeat;
+    background-color: white;
+
+    h1 {
+    	padding: 5px;
+    }
+  }
+
+  #side {
+    float: left;
+    padding: 1em 2em;
+    width: 13em;
+    background: #d7d0db;
+
+
+      table {
+        border-top: 1px dotted #595;
+        border-bottom: 1px dotted #595;
+        margin-bottom: 10px;
+      }
+    }
+
+    ul {
+      padding: 0;
+
+      li {
+        list-style: none;
+
+        a {
+          color: #544759;
+          font-size: 1.8em;
+          line-height: 1.2em;
+          font-family: 'Handlee', cursive;
+          text-decoration: none;
+          &:hover {
+            text-decoration: underline;
+            background-color: #d7d0db;
+          }
+          &:visited {
+            color: #8688ac;
+          }
+        }
+      }
+  }
+}
+
+fieldset {
+    background: #fff;
+    legend {
+      color: #fff;
+      font-family: sans-serif;
+      padding: 0.2em 1em;
+      background: #757a7c;
+    }
+  }
+
+form {
+  padding-left: 5px;
+  label {
+    width: 7em;
+    text-align: right;
+    padding-top: 0.2em;
+    padding-right: 0.2em;
+    display: block;
+    float: left;
+   }
+   select, textarea, input {
+    margin-left: 0.5em;
+    margin-bottom: 0.3em;
+   }background image url
+  .submit {
+    margin-left: 4em;
+  }
+  .actions {
+    margin-top: 4em;
+  }
+  br {
+    display: none
+  }
+}

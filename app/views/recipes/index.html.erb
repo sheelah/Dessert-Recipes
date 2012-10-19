@@ -1,27 +1,39 @@
-<h1>Listing recipes</h1>
+<h1>Your Recipes</h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Content</th>
-    <th>Image url</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @recipes.each do |recipe| %>
-  <tr>
-    <td><%= recipe.name %></td>
-    <td><%= recipe.content %></td>
-    <td><%= recipe.image_url %></td>
-    <td><%= link_to 'Show', recipe %></td>
-    <td><%= link_to 'Edit', edit_recipe_path(recipe) %></td>
-    <td><%= link_to 'Destroy', recipe, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+<% user_recipes = Recipe.user_recipes(session[:user_id]) %>
+<% if !user_recipes.empty? %>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Submitted By</th>
+      <th>Image</th>
+      <th>Ingredients</th>
+      <th>Instructions</th>
+      <th>Ratings</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+    <% user_recipes.each do |recipe| %>
+      <tr>
+        <td><%= recipe.name %></td>
+        <td><%= get_user_name(recipe.user_id) %></td>
+        <td><img src="<%= picture_recipe_path(recipe.id) %>"></td>
+        <td><%= recipe.ingredients %></td>
+        <td><%= recipe.instructions %></td>
+        <td><%= link_to 'Ratings', recipe_ratings_path(recipe) %></td>
+        <td><%= link_to 'Show', recipe %></td>
+        <td><%= link_to 'Edit', edit_recipe_path(recipe) %></td>
+        <td><%= link_to 'Destroy', recipe, method: :delete,
+          data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </table>
+<% else %>
+  <p>You haven't submitted any recipes yet.</p>
 <% end %>
-</table>
 
 <br />
 
-<%= link_to 'New Recipe', new_recipe_path %>
+<%= link_to 'New Recipe', new_recipe_path %><br />
+<%= link_to 'All Recipes (Full Index)', all_recipes_index_path %>

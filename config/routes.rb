@@ -1,5 +1,23 @@
 DessertRecipes::Application.routes.draw do
-  resources :recipes
+
+  controller :account do
+    get 'login' => :new
+    post 'login' => :create
+    delete 'logout' => :destroy
+  end
+
+  get "all_recipes/index"
+  get "account/new"
+
+
+  resources :recipes do
+    member do
+      get 'picture'
+    end
+    resources :ratings
+  end
+
+  resources :users
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -51,6 +69,7 @@ DessertRecipes::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   # root :to => 'welcome#index'
+  root :to => 'all_recipes#index'
 
   # See how all your routes lay out with "rake routes"
 

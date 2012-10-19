@@ -1,4 +1,6 @@
-<p id="notice"><%= notice %></p>
+<% if notice %>
+  <p id="notice"><%= notice %></p>
+<% end %>
 
 <p>
   <b>Name:</b>
@@ -6,15 +8,33 @@
 </p>
 
 <p>
-  <b>Content:</b>
-  <%= @recipe.content %>
+  <b>Submitted By:</b>
+  <%= get_user_name(@recipe.user_id) %>
 </p>
 
 <p>
-  <b>Image url:</b>
-  <%= @recipe.image_url %>
+  <b>Ingredients:</b>
+  <%= simple_format(@recipe.ingredients).gsub("\n", "<br />").html_safe %>
 </p>
 
+<p>
+  <b>Instructions:</b>
+  <%= @recipe.instructions %>
+</p>
 
-<%= link_to 'Edit', edit_recipe_path(@recipe) %> |
+<p>
+  <img src="<%= picture_recipe_path(@recipe.id) %>">
+</p>
+
+<p>
+	<b>Ratings:</b>
+	<%= link_to 'View Ratings', recipe_ratings_path(@recipe) %>
+</p>
+
+<!-- TODO: Only show edit link if user ID for recipe matches user id of logged in user-->
+<% if session[:user_id] %>
+  <% if session[:user_id] == @recipe.user_id %>
+    <%= link_to 'Edit', edit_recipe_path(@recipe) %> |
+  <% end %>
+<% end %>
 <%= link_to 'Back', recipes_path %>

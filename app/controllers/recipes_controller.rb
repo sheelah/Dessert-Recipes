@@ -1,4 +1,6 @@
 class RecipesController < ApplicationController
+  before_filter :authorize, :except => [:show, :picture]
+  before_filter :allow_recipe_changes, :only => [:edit, :update, :destroy]
   # GET /recipes
   # GET /recipes.json
   def index
@@ -79,5 +81,13 @@ class RecipesController < ApplicationController
       format.html { redirect_to recipes_url }
       format.json { head :no_content }
     end
+  end
+
+  def picture
+    # Recipe photo is stored in the DB.
+    @recipe = Recipe.find(params[:id])
+    # Send binary data to browser and displays inline
+    send_data(@recipe.data, :type=>@recipe.image_type,
+     :disposition=>"inline")
   end
 end

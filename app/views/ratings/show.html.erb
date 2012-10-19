@@ -1,0 +1,28 @@
+<% if notice %>
+  <p id="notice"><%= notice %></p>
+<% end %>
+
+<p>
+  <b>Submitted By:</b>
+  <%= get_user_name(@rating.user_id) %>
+</p>
+
+
+<p>
+  <b>Comment:</b>
+  <%= @rating.comment %>
+</p>
+
+<p>
+  <b>Stars:</b>
+  <%= @rating.stars %>
+</p>
+
+
+<!-- TODO: Only show edit link if user ID for rating matches user id of logged in user-->
+<% if session[:user_id] %>
+  <% if session[:user_id] == @rating.user_id %>
+    <%= link_to 'Edit', edit_recipe_rating_path(@recipe, @rating) %> |
+  <% end %>
+<% end %>
+<%= link_to 'Back', recipe_ratings_path(@recipe) %>

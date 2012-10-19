@@ -1,0 +1,23 @@
+<% if notice %>
+  <p id="notice"><%= notice %></p>
+<% end %>
+<h1>All Recipes</h1>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Image</th>
+      <th>Total Ratings</th>
+      <th>Details</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+    <% @recipes.each do |recipe| %>
+      <tr>
+        <td><%= recipe.name %></td>
+        <td><img src="<%= picture_recipe_path(recipe.id) %>"></td>
+        <td><%= recipe.ratings.count %></td>
+        <td><%= link_to 'View details', recipe_path(recipe) %></td>
+      </tr>
+    <% end %>
+  </table>

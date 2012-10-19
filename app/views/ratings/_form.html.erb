@@ -1,0 +1,26 @@
+<%= form_for([@recipe, @rating]) do |f| %>
+  <% if @rating.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@rating.errors.count, "error") %> prohibited this recipe from being saved:</h2>
+
+      <ul>
+      <% @rating.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :comment %><br />
+    <%= f.text_area :comment %>
+  </div>
+  <div class="field">
+    <%= f.label :stars %><br />
+    <%= f.select :stars, (1..5), {:include_blank => "Select stars", :default => nil} %>
+  </div>
+  <%= f.hidden_field :user_id, :value => session[:user_id] %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

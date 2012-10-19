@@ -1,0 +1,22 @@
+<% if alert %>
+<p id="notice"><%= alert %></p>
+<% end %>
+<div class="login_form">
+  <fieldset>
+    <legend>Please Log In</legend>
+    <%= form_tag do %>
+    <div>
+      <label for="name">Name</label>
+      <%= text_field_tag :name %>
+    </div>
+    <div>
+      <label for="password">Password</label>
+      <%= password_field_tag :password %>
+    </div>
+    <div>
+      <%= submit_tag 'Log In'%>
+    </div>
+    <% end %>
+  </fieldset>
+  <p>Not a member yet? <%= link_to 'Create a user account here.', new_user_path %></p>
+</div>

@@ -16,13 +16,18 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :content %><br />
-    <%= f.text_area :content %>
+    <%= f.label :ingredients %><br />
+    <%= f.text_area :ingredients %>
   </div>
   <div class="field">
-    <%= f.label :image_url %><br />
-    <%= f.text_field :image_url %>
+    <%= f.label :instructions %><br />
+    <%= f.text_area :instructions %>
   </div>
+  <div class="field">
+    <%= f.label :uploaded_picture, "Upload a recipe picture" %><br />
+    <%= f.file_field :uploaded_picture %>
+  </div>
+  <%= f.hidden_field :user_id, :value => session[:user_id] %>
   <div class="actions">
     <%= f.submit %>
   </div>

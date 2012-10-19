@@ -1,0 +1,35 @@
+<h1>Ratings for <%= @recipe.name %></h1>
+
+<% if !@recipe.ratings.empty? %>
+  <table>
+    <tr>
+      <th>Comment</th>
+      <th>Stars</th>
+      <th>Reviewer</th>
+    </tr>
+    <% for rating in @ratings %>
+      <tr>
+        <td><%= rating.comment %></td>
+        <td><%= rating.stars %></td>
+        <td><%= get_user_name(rating.user_id) %></td>
+        <td><%= link_to 'Show', [@recipe, rating] %></td>
+        <!-- Only show edit/destroy links if user id matches user id of rating -->
+        <% if session[:user_id] %>
+          <% if session[:user_id] == rating.user_id %>
+            <td><%= link_to 'Edit',
+              edit_recipe_rating_path(@recipe, rating) %></td>
+            <td><%= link_to 'Destroy', [@recipe, rating],
+              :confirm => 'Are you sure?', :method => :delete %></td>
+          <% end %>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+  <br />
+<% else %>
+  <p><%= @recipe.name %> doesn't have any ratings yet.</p>
+<% end %>
+  <p>
+  	<%= link_to 'New rating', new_recipe_rating_path(@recipe) %> |
+  	  <%= link_to 'Back', @recipe %>
+  </p>
