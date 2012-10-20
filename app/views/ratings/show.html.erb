@@ -19,7 +19,6 @@
 </p>
 
 
-<!-- TODO: Only show edit link if user ID for rating matches user id of logged in user-->
 <% if session[:user_id] %>
   <% if session[:user_id] == @rating.user_id %>
     <%= link_to 'Edit', edit_recipe_rating_path(@recipe, @rating) %> |

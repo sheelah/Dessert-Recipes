@@ -12,8 +12,12 @@
     <% @recipes.each do |recipe| %>
       <tr>
         <td><%= recipe.name %></td>
-        <td><img class="image_thumb"
-          src="<%= picture_recipe_path(recipe.id) %>"></td>
+        <% if recipe.data %>
+          <td><img class="image_thumb"
+            src="<%= picture_recipe_path(recipe.id) %>"></td>
+        <% else %>
+          <td></td>
+        <% end %>
         <td><%= recipe.ratings.count %></td>
         <td><%= link_to 'View details', recipe_path(recipe) %></td>
       </tr>

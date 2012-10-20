@@ -15,8 +15,12 @@
       <tr>
         <td><%= recipe.name %></td>
         <td><%= get_user_name(recipe.user_id) %></td>
-        <td><img class="image_thumb"
-          src="<%= picture_recipe_path(recipe.id) %>"></td>
+        <% if recipe.data %>
+          <td><img class="image_thumb"
+            src="<%= picture_recipe_path(recipe.id) %>"></td>
+        <% else %>
+          <td></td>
+        <% end %>
         <td><%=  truncate(strip_tags(recipe.ingredients),
           :length => 25) %></td>
         <td><%=  truncate(strip_tags(recipe.instructions),

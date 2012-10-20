@@ -23,7 +23,9 @@
 </p>
 
 <p>
-  <img src="<%= picture_recipe_path(@recipe.id) %>">
+   <% if @recipe.data %>
+     <img src="<%= picture_recipe_path(@recipe.id) %>">
+   <% end %>
 </p>
 
 <p>
@@ -31,7 +33,6 @@
 	<%= link_to 'View Ratings', recipe_ratings_path(@recipe) %>
 </p>
 
-<!-- TODO: Only show edit link if user ID for recipe matches user id of logged in user-->
 <% if session[:user_id] %>
   <% if session[:user_id] == @recipe.user_id %>
     <%= link_to 'Edit', edit_recipe_path(@recipe) %> |
