@@ -14,8 +14,12 @@
 
 @import url(http://fonts.googleapis.com/css?family=Handlee);
 
+$dark_purple: #544759;
+$mid_purple: #8688ac;
+$light_purple: #d7d0db;
+
 #banner {
-  background: #544759;
+  background: $dark_purple;
   padding: 30px;
   border-bottom: 2px solid;
   letter-spacing: -0.05em;
@@ -31,12 +35,26 @@
 
 #current_user {
   float: right;
-  letter-spacing: -0.01em;
-  font-size: 0.8em;
+  p {
+    font-size: 0.25em;
+    text-align: right;
+    letter-spacing: -0.01em;
+    line-height: 0.1em;
+  }
+  a {
+    color: #fff;
+    &:visited {
+      color: #666;
+    }
+    &:hover {
+      color: #fff;
+      background-color: #000;
+    }
+  }
 }
 
 #footer {
-  background: white;
+  background: #fff;
   p {
     text-align: center;
     font-size: 0.8em;
@@ -53,14 +71,14 @@
 }
 
 #columns {
-  background: #d7d0db;
+  background: $light_purple;
 
   #main {
     margin-left: 17em;
     padding: 1em;
     background-image: image-url('back_pattern.png');
     background-repeat: repeat;
-    background-color: white;
+    background-color: #fff;
 
     h1 {
     	padding: 5px;
@@ -71,7 +89,7 @@
     float: left;
     padding: 1em 2em;
     width: 13em;
-    background: #d7d0db;
+    background: $light_purple;
 
 
       table {
@@ -88,17 +106,17 @@
         list-style: none;
 
         a {
-          color: #544759;
+          color: $dark_purple;
           font-size: 1.8em;
           line-height: 1.2em;
           font-family: 'Handlee', cursive;
           text-decoration: none;
           &:hover {
             text-decoration: underline;
-            background-color: #d7d0db;
+            background-color: $light_purple;
           }
           &:visited {
-            color: #8688ac;
+            color: $mid_purple;
           }
         }
       }
@@ -128,7 +146,7 @@ form {
    select, textarea, input {
     margin-left: 0.5em;
     margin-bottom: 0.3em;
-   }background image url
+   }
   .submit {
     margin-left: 4em;
   }

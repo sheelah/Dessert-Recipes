@@ -19,8 +19,10 @@
         <td><%= recipe.name %></td>
         <td><%= get_user_name(recipe.user_id) %></td>
         <td><img src="<%= picture_recipe_path(recipe.id) %>"></td>
-        <td><%= recipe.ingredients %></td>
-        <td><%= recipe.instructions %></td>
+        <td><%=  truncate(strip_tags(recipe.ingredients),
+          :length => 25) %></td>
+        <td><%=  truncate(strip_tags(recipe.instructions),
+          :length => 25) %></td>
         <td><%= link_to 'Ratings', recipe_ratings_path(recipe) %></td>
         <td><%= link_to 'Show', recipe %></td>
         <td><%= link_to 'Edit', edit_recipe_path(recipe) %></td>
